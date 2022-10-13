@@ -1,3 +1,5 @@
+use std::i32;
+
 fn main() {
     println!("Welcome to the Rabbit University Safety Testing Suite (RUSTs)");
 
@@ -22,7 +24,7 @@ fn validate_grading_system() {
 
 /// Calculate the grade
 fn calculate_grade(carrots: i32, nuts: i32, seeds: i32) -> i32 {
-    todo!()
+    return (carrots + nuts) * (carrots + nuts + seeds)
 }
 
 /// Validate the safety system
@@ -49,7 +51,12 @@ fn calculate_safety_status(
     has_carrot: bool,
     friends_nearby: i32,
 ) -> bool {
-    todo!()
+    if (wolves_nearby == false && day_time == true) || has_carrot == true || friends_nearby > 3 {
+        return true
+    }
+    else{
+        return false
+    }
 }
 
 /// Validate the simulation
@@ -66,8 +73,19 @@ fn validate_simulation() {
 }
 
 /// Simulate the rabbit population
-fn simulate(starting_rabbits: i128) -> i32 {
-    todo!()
+fn simulate(starting_rabbits: i128) -> i32 {  
+    let mut days: i32 = 0;
+    let mut rabbits: i128 = starting_rabbits;
+    while rabbits > 1{
+        if rabbits % 2 != 0{
+            rabbits = (3 * rabbits) + 1;
+        }
+        else{
+            rabbits = rabbits / 2;
+        }
+        days += 1;
+    }
+    return days;
 }
 
 #[cfg(test)]
